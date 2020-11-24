@@ -1,0 +1,5 @@
+[server]
+master
+
+[clients]
+node-0-[0:1]

@@ -1,0 +1,17 @@
+---
+- hosts: clients
+  tasks:
+  - name: Installing rsyslog package
+    yum: name=rsyslog state=present
+    become: true
+  - name: Configuring rsyslog service
+    copy:
+        src: sources/rsyslog/client/rsyslog.d/30-forward.conf
+        dest: /etc/rsyslog.d/30-forward.conf
+    notify: "Restarting rsyslog service"
+  handlers:
+  - name: Restarting rsyslog service
+    service:
+        name: rsyslog
+        state: restarted
+        enabled: yes
