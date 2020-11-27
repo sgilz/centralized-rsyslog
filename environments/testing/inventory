@@ -1,11 +1,10 @@
 [slaves]
-node-0-0      ansible_host=192.168.2.254
-node-0-1      ansible_host=192.168.2.253
+node-0-0
+node-0-1
 
 [slaves:vars]
 ansible_user=root
 ansible_python_interpreter=/usr/libexec/platform-python
-ansible_connection=paramiko
 
 [master]
 master	      ansible_connection=local ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python
