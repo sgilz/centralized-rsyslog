@@ -1,0 +1,5 @@
+---
+- name: computes
+  hosts: slaves
+  roles:
+    - computes
