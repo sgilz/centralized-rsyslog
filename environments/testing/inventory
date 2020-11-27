@@ -1,0 +1,14 @@
+[slaves]
+node-0-0
+node-0-1
+
+[slaves:vars]
+ansible_user=root
+ansible_python_interpreter=/usr/libexec/platform-python
+
+[master]
+master	      ansible_connection=local ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python
+
+[cluster:children]
+master
+slaves
