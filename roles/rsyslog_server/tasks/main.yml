@@ -8,7 +8,7 @@
     state: present
     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
   copy:
-    src: elasticsearch.repo
+    src: etc/yum.repos.d/elasticsearch.repo
     dest: /etc/yum.repos.d/elasticsearch.repo
 - name: Installing ELK
   yum: 
