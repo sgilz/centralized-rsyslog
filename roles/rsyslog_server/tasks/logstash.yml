@@ -1,0 +1,11 @@
+---
+- name: Configuring logstash
+  copy:
+    src: etc/logstash/conf.d/10-custom-filter.conf
+    dest: /etc/logstash/conf.d/10-custom-filter.conf
+  template:
+    src: "{{ item.src }}"
+    dest: "/etc/logstash/{{ item.path }} | regex_replace('\\.j2$', '') }}"
+  with_filetree: "roles/rsyslog_server/templates/etc/logstash"
+  notify: Starting logstash service
+  when: item.state == 'file'

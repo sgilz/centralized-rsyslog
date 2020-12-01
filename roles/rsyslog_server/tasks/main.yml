@@ -1,0 +1,20 @@
+---
+- name: Verifying Java dependencies
+  yum: 
+    name: java-1.8.0-openjdk
+    state: present
+- name: Adding ELK repository
+  rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  copy:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/elasticsearch.repo
+- name: Installing ELK
+  yum: 
+    name: "{{package_list}}"
+    state: present
+#ELK config
+- include_tasks: elasticsearch_kibana.yml
+- include_tasks: logstash.yml
+- include_tasks: rsyslog_config.yml

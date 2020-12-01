@@ -4,8 +4,8 @@
 # type => "rsyslog" is an optional identifier to help identify messaging streams in the pipeline.
 input {
   udp {
-    host => "127.0.0.1"
-    port => 10514
+    host => "{{ logstash_ip }}"
+    port => {{ logstash_port }}
     codec => "json"
     type => "rsyslog"
   }
