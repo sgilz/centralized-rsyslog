@@ -3,10 +3,11 @@
   yum: 
     name: java-1.8.0-openjdk
     state: present
-- name: Adding ELK repository
+- name: Adding ELK rpm key
   rpm_key:
     state: present
     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+- name: Adding ELK repo
   copy:
     src: etc/yum.repos.d/elasticsearch.repo
     dest: /etc/yum.repos.d/elasticsearch.repo
