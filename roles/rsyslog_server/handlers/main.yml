@@ -16,7 +16,7 @@
       name: kibana
       state: restarted
       enabled: yes
-  command: systemctl enable
+  command: systemctl enable kibana
 - name: Restarted logstash service
   service:
       name: logstash
