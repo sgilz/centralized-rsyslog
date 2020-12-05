@@ -13,14 +13,14 @@
       enabled: yes
 - name: Enabling elasticsearch service
   command: systemctl enable elasticsearch
-- name: Restarted kibana service
+- name: Restarting kibana service
   service:
       name: kibana
       state: restarted
       enabled: yes
 - name: Enabling kibana service
   command: systemctl enable kibana
-- name: Restarted logstash service
+- name: Restarting logstash service
   service:
       name: logstash
       state: restarted
