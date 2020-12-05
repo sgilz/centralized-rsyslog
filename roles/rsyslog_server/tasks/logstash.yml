@@ -3,15 +3,14 @@
   copy:
     src: etc/logstash/conf.d/10-custom-filter.conf
     dest: /etc/logstash/conf.d/10-custom-filter.conf
-  notify: 
-  - Restarting logstash service
-  - Enabling logstash service
-- name: Configuring logstash input/output
+  notify: Restart logstash service
+- name: Configuring logstash input
   template:
-    src: "{{ item.src }}"
-    dest: "/etc/logstash/{{ item.path }} | regex_replace('\\.j2$', '') }}"
-  with_filetree: "roles/rsyslog_server/templates/etc/logstash"
-  notify: 
-  - Restarting logstash service
-  - Enabling logstash service
-  when: item.state == 'file'
+    src: etc/logstash/conf.d/02-input.conf.j2
+    dest: /etc/logstash/conf.d/02-input.conf
+  notify: Restart logstash service
+- name: Configuring logstash output
+  template:
+    src: etc/logstash/conf.d/30-output.conf.j2
+    dest: /etc/logstash/conf.d/30-output.conf
+  notify: Restart logstash service
