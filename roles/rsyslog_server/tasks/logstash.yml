@@ -1,8 +1,9 @@
 ---
-- name: Configuring logstash
+- name: Configuring logstash filters
   copy:
     src: etc/logstash/conf.d/10-custom-filter.conf
     dest: /etc/logstash/conf.d/10-custom-filter.conf
+- name: Configuring logstash input/output
   template:
     src: "{{ item.src }}"
     dest: "/etc/logstash/{{ item.path }} | regex_replace('\\.j2$', '') }}"
