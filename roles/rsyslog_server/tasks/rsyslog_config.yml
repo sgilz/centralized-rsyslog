@@ -1,7 +1,7 @@
 ---
 - name: Configuring rsyslog core
-  copy: 
-    src: etc/rsyslog.conf
+  template: 
+    src: etc/rsyslog.conf.j2
     dest: /etc/rsyslog.conf
   notify:  Restarting rsyslog service
 - name: Configuring rsyslog forwarding JSON template
