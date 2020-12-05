@@ -3,7 +3,9 @@
   template:
     src: "etc/{{ item }}/{{ item }}.yml.j2"
     dest: "/etc/{{ item }}/{{ item }}.yml"
-  notify: "Restarting {{ item }} service"
+  notify: 
+  - "Restarting {{ item }} service"
+  - "Enabling {{ item }} service"
   loop:
     - elasticsearch
     - kibana
