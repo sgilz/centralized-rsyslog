@@ -17,4 +17,5 @@
       loop: "{{ packages }}"
     - name: remove rsyslog.d 
       shell: rm -rf /etc/rsyslog.d/*
-      warn: false
+      args:
+        warn: no
