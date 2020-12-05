@@ -4,18 +4,22 @@
       name: rsyslog
       state: restarted
       enabled: yes
-- name: Starting elasticsearch service
+  command: systemctl enable rsyslog
+- name: Restarting elasticsearch service
   service:
       name: elasticsearch
-      state: started
+      state: restarted
       enabled: yes
-- name: Starting kibana service
+  command: systemctl enable elasticsearch
+- name: Restarted kibana service
   service:
       name: kibana
-      state: started
+      state: restarted
       enabled: yes
-- name: Starting logstash service
+  command: systemctl enable
+- name: Restarted logstash service
   service:
       name: logstash
-      state: started
+      state: restarted
       enabled: yes
+  command: systemctl enable logstash
