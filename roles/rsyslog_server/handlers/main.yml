@@ -1,13 +1,4 @@
 ---
-- name: Restarting rsyslog service
-  service:
-      name: rsyslog
-      state: restarted
-      enabled: yes
-  listen: Restart rsyslog service 
-- name: Enabling rsyslog service
-  command: systemctl enable rsyslog
-  listen: Restart rsyslog service 
 - name: Restarting elasticsearch service
   service:
       name: elasticsearch
@@ -35,3 +26,12 @@
 - name: Enabling logstash service
   command: systemctl enable logstash
   listen: Restart logstash service 
+- name: Restarting rsyslog service
+  service:
+      name: rsyslog
+      state: restarted
+      enabled: yes
+  listen: Restart rsyslog service 
+- name: Enabling rsyslog service
+  command: systemctl enable rsyslog
+  listen: Restart rsyslog service 
