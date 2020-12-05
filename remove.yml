@@ -8,10 +8,10 @@
   tasks:
     - name: remove ELK packages
       yum:
-        name: {{ packages }}
+        name: "{{ packages }}"
         state: removed
     - name: remove ELK dirs
       file:
         path: "/etc/{{item}}"
         state: absent
-      loop: {{ packages }}
+      loop: "{{ packages }}"
