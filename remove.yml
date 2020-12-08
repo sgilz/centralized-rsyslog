@@ -1,0 +1,21 @@
+---
+- hosts: rsyslog_server
+  vars:
+    packages:
+      - elasticsearch
+      - kibana
+      - logstash
+  tasks:
+    - name: remove ELK packages
+      yum:
+        name: "{{ packages }}"
+        state: removed
+    - name: remove ELK dirs
+      file:
+        path: "/etc/{{item}}"
+        state: absent
+      loop: "{{ packages }}"
+    - name: remove rsyslog.d 
+      shell: rm -rf /etc/rsyslog.d/*
+      args:
+        warn: no

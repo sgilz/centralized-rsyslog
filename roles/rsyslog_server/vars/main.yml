@@ -1,0 +1,21 @@
+---
+package_list:
+  - rsyslog
+  - elasticsearch
+  - kibana
+  - logstash
+
+# elasticsearch
+elasticsearch_ip: localhost
+elasticsearch_port: 9200
+
+# kibana
+server_ip: 192.168.5.162
+server_port: 9000
+
+# logstash
+logstash_ip: 127.0.0.1
+logstash_port: 10514
+
+#rsyslog 
+rsyslog_port: 514

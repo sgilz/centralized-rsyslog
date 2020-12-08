@@ -1,7 +1,7 @@
 output {
   # output for elasticsearch
   elasticsearch {
-    hosts => ["localhost:9200"]
+    hosts => ["{{elasticsearch_ip}}:{{elasticsearch_port}}"]
     manage_template => false
     index => "logstash-%{+YYYY.MM.dd}"
   }

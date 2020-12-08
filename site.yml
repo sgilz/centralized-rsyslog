@@ -1,2 +1,3 @@
 ---
+- import_playbook: playbooks/rsyslog_server.yml
 - import_playbook: playbooks/computes.yml

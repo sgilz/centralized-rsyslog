@@ -1,0 +1,16 @@
+---
+- name: Configuring logstash filters
+  copy:
+    src: etc/logstash/conf.d/10-custom-filter.conf
+    dest: /etc/logstash/conf.d/10-custom-filter.conf
+  notify: Restart logstash service
+- name: Configuring logstash input
+  template:
+    src: etc/logstash/conf.d/02-input.conf.j2
+    dest: /etc/logstash/conf.d/02-input.conf
+  notify: Restart logstash service
+- name: Configuring logstash output
+  template:
+    src: etc/logstash/conf.d/30-output.conf.j2
+    dest: /etc/logstash/conf.d/30-output.conf
+  notify: Restart logstash service

@@ -4,3 +4,7 @@
       name: rsyslog
       state: restarted
       enabled: yes
+  listen: Restart rsyslog service 
+- name: Enabling rsyslog service
+  command: systemctl enable rsyslog
+  listen: Restart rsyslog service 

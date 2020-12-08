@@ -1,2 +1,0 @@
----
-include_tasks: rsyslog_config.yml

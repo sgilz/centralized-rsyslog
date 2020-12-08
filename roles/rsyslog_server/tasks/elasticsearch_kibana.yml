@@ -1,0 +1,9 @@
+---
+- name: Configuring elasticsearch and kibana
+  template:
+    src: "etc/{{ item }}/{{ item }}.yml.j2"
+    dest: "/etc/{{ item }}/{{ item }}.yml"
+  notify: "Restart {{ item }} service"
+  loop:
+    - elasticsearch
+    - kibana

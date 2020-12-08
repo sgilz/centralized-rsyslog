@@ -6,9 +6,9 @@ node-0-1
 ansible_user=root
 ansible_python_interpreter=/usr/libexec/platform-python
 
-[master]
+[rsyslog_server]
 master	      ansible_connection=local ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python
 
 [cluster:children]
-master
+rsyslog_server
 slaves
