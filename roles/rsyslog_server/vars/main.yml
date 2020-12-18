@@ -10,7 +10,7 @@ elasticsearch_ip: localhost
 elasticsearch_port: 9200
 
 # kibana
-server_ip: 192.168.5.162
+server_ip: 200.12.187.164
 server_port: 9000
 
 # logstash
