@@ -1,0 +1,68 @@
+output {
+
+  # SECURE
+  if [secure_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch { # Dead Letter Queue is only supported for elasticsearch output
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "secure"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+
+  # SLURMCTL
+  if [slurm_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch {
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "slurmctl"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+
+  # SLURMD
+  if [slurmd_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch {
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "slurmd"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+
+  # CRONJOBS
+  if [cron_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch {
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "cron"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+
+  # MESSAGES
+  if [messages_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch {
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "messages"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+
+  # FreeIPA
+  if [freeipa_correctly_filtered] {
+    # Uncomment the next line only for debug purposes.
+    # stdout { codec => rubydebug }
+    elasticsearch {
+      http_compression => true # Elasticsearch uses http compression by default
+      index => "freeipa"
+      hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
+    }
+  }
+}

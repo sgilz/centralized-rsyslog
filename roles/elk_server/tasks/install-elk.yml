@@ -1,0 +1,48 @@
+---
+- name: Verifying Java dependencies
+  yum: 
+    name: 
+      - java-{{ java_version }}-openjdk
+      - java-{{ java_version }}-openjdk-devel
+    state: present
+
+- name: Adding ELK rpm key
+  rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+# to save rpm files
+- name: Create directory rpm into /tmp
+  file:
+    path: /tmp/rpm
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Download rpm files
+  get_url:
+    url: "https://artifacts.elastic.co/downloads/{{ item }}/{{ item }}-{{ elk_version }}-x86_64.rpm"
+    dest: "/tmp/rpm/{{ item }}-{{ elk_version }}-x86_64.rpm"
+    checksum: "sha512:https://artifacts.elastic.co/downloads/{{ item }}/{{ item }}-{{ elk_version }}-x86_64.rpm.sha512"
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash
+
+#Installation done this way to aviod yum bottleneck iterating through a loop
+- name: Finding all rpm files in /tmp/rpm folder
+  find:
+    paths: "/tmp/rpm"
+    patterns: "*.rpm"
+    recurse: yes
+  register: rpm_files
+
+- name: Setting rpm_list as a list of paths
+  set_fact:
+    rpm_list: "{{ rpm_files.files | map(attribute='path') | list}}"
+
+- name: Installing ELK rpm files
+  yum:
+    name: "{{ rpm_list }}"
+    state: present

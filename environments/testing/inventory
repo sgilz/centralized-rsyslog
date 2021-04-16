@@ -1,14 +1,13 @@
 [slaves]
-node-0-0
-node-0-1
+node-0-[0:1]
 
 [slaves:vars]
 ansible_user=root
 ansible_python_interpreter=/usr/libexec/platform-python
 
-[rsyslog_server]
-master	      ansible_connection=local ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python
+[master]
+localhost   ansible_connection=local ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python
 
 [cluster:children]
-rsyslog_server
+master
 slaves

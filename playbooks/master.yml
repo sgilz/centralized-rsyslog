@@ -1,0 +1,5 @@
+---
+- name: master
+  hosts: master
+  roles:
+    - master

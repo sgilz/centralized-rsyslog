@@ -1,2 +1,7 @@
-server_ip: 192.168.2.1
-server_port: 514
+elk_server_ip: 192.168.2.1
+logstash_port: 5044
+
+#elk version 
+elk_version: 7.12.0
+
+send_cron: false

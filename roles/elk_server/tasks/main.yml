@@ -1,0 +1,5 @@
+---
+#ELK installation    
+- include_tasks: install-elk.yml
+#ELK config
+- include_tasks: config.yml

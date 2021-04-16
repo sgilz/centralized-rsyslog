@@ -1,3 +1,4 @@
 ---
-- import_playbook: playbooks/rsyslog_server.yml
+- import_playbook: playbooks/elk_server.yml
+- import_playbook: playbooks/master.yml
 - import_playbook: playbooks/computes.yml

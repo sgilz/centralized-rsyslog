@@ -1,0 +1,12 @@
+---
+#network
+machine: 192.168.5.162
+elasticsearch_port: 9200
+kibana_port: 9000
+logstash_port: 5044
+
+#dependencies
+java_version: 1.8.0
+
+#elk version 
+elk_version: 7.12.0

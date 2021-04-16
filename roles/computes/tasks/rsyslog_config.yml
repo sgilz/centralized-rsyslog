@@ -1,9 +1,0 @@
----
-- name: Installing rsyslog package
-  yum: name=rsyslog state=present
-  become: true
-- name: Configuring rsyslog service
-  template:
-      src: 30-forward.conf.j2
-      dest: /etc/rsyslog.d/30-forward.conf
-  notify: Restart rsyslog service 
