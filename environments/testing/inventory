@@ -1,5 +1,5 @@
 [slaves]
-node-0-[0:1]
+compute-1-17
 
 [slaves:vars]
 ansible_user=root
