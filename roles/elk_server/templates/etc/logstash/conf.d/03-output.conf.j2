@@ -11,13 +11,13 @@ output {
     }
   }
 
-  # SLURMCTL
-  if [slurm_correctly_filtered] {
+  # SLURMCTLD
+  if [slurmctld_correctly_filtered] {
     # Uncomment the next line only for debug purposes.
     # stdout { codec => rubydebug }
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
-      index => "slurmctl"
+      index => "slurmctld"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }

@@ -5,14 +5,36 @@
     state: restarted
     enabled: yes
 
+- name: enable_restart_logstash
+  systemd:
+    name: logstash
+    state: restarted
+    enabled: yes 
+
 - name: enable_restart_kibana
   systemd:
     name: kibana
     state: restarted
     enabled: yes
 
-- name: enable_restart_logstash
-  systemd:
-    name: logstash
-    state: restarted
-    enabled: yes 
+- name: Create indexes and mappings
+  uri:
+    url: "http://{{ machine }}:{{ elasticsearch_port }}/{{ item }}?pretty"
+    headers:
+      Content-Type: application/json
+    timeout: 60
+    method: PUT
+    src: "indexes/{{ item }}.json"
+  loop: "{{ indexes }}"
+  listen: create_indexes_mappings
+
+- name: Unset index replicas
+  uri:
+    url: "http://{{ machine }}:{{ elasticsearch_port }}/{{ item }}/_settings?pretty"
+    headers:
+      Content-Type: application/json
+    timeout: 60
+    method: PUT
+    src: "indexes/settings.json"
+  loop: "{{ indexes }}"
+  listen: create_indexes_mappings

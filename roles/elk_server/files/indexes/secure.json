@@ -1,0 +1,44 @@
+{
+    "mappings":{
+        "properties":{
+            "@timestamp" : { "type" : "date" },
+            "type": { "type" : "keyword" },
+            "system_hostname":{ "type": "keyword" },
+            "system_sudo_user":{ "type": "keyword" },
+            "system_sudo_error":{
+                "type": "text",
+                "analyzer": "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "system_sudo_workdir":{ "type": "keyword" },
+            "system_sudo_asuser":{ "type": "keyword" },
+            "system_sudo_command":{
+                "type": "text",
+                "analyzer" : "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "system_groupadd_name":{ "type": "keyword" },
+            "system_groupadd_gid":{ "type": "integer" },
+            "system_useradd_name":{ "type": "keyword" },
+            "system_useradd_uid":{ "type": "integer" },
+            "system_useradd_gid":{ "type": "integer" },
+            "system_useradd_home":{ "type": "keyword" },
+            "system_useradd_shell":{ "type": "keyword" },
+            "sshd_guest_ip":{ "type": "ip" },
+            "sshd_guest_port":{ "type": "integer" },
+            "sshd_guest_signature":{ "type": "text" },
+            "sshd_event":{ "type": "keyword" },
+            "sshd_method":{ "type": "keyword" },
+            "sshd_user":{ "type": "keyword" }
+        }
+    }
+}
+  

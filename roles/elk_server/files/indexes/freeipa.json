@@ -1,0 +1,12 @@
+{
+    "mappings":{
+        "properties":{
+            "@timestamp" : { "type" : "date" },
+            "type": { "type" : "keyword"},
+            "access_operation_id":{ "type": "integer" },
+            "access_operation_type":{ "type": "keyword" },
+            "access_user_id":{ "type": "keyword" },
+            "access_error_code":{ "type": "integer" }
+        }
+    }
+}

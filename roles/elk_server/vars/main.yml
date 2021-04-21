@@ -10,3 +10,12 @@ java_version: 1.8.0
 
 #elk version 
 elk_version: 7.12.0
+
+#for elasticsearch index mappings
+indexes:
+  - cron
+  - freeipa
+  - messages
+  - secure
+  - slurmctld
+  - slurmd

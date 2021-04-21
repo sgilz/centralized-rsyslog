@@ -1,0 +1,19 @@
+{
+    "mappings":{
+        "properties":{
+            "@timestamp" : { "type" : "date" },
+            "type": { "type" : "keyword" },
+            "hostname":{ "type": "keyword" },
+            "message":{
+                "type": "text",
+                "analyzer": "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "service":{ "type": "keyword" }
+        } 
+    }
+}

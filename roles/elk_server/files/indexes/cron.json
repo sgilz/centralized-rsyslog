@@ -1,0 +1,31 @@
+{
+    "mappings":{
+        "properties":{
+            "@timestamp" : { "type" : "date" },
+            "type": { "type" : "keyword" },
+            "cmd":{
+                "type": "text",
+                "analyzer": "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "event":{
+                "type": "text",
+                "analyzer": "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "hostname":{ "type": "keyword" },
+            "pid":{ "type": "keyword" },
+            "target":{ "type": "keyword" },
+            "user":{ "type": "keyword" } 
+        }
+    }
+}
+  

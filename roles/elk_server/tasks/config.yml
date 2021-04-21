@@ -6,7 +6,9 @@
     owner: root
     group: root
     mode: 0644
-  notify: "enable_restart_elasticsearch"
+  notify: 
+    - enable_restart_elasticsearch
+    - create_indexes_mappings
 
 - name: Create dead_letter_queue directory if it does not exist
   file:
@@ -52,4 +54,4 @@
     owner: root
     group: root
     mode: 0644
-  notify: "enable_restart_kibana"
+  notify: enable_restart_kibana

@@ -1,0 +1,26 @@
+{
+    "mappings":{
+        "properties":{
+            "@timestamp" : { "type" : "date" },
+            "type": { "type" : "keyword" },
+            "error": {
+                "type": "text",
+                "analyzer": "standard",
+                "fields": {
+                    "keyword":{
+                        "type": "keyword"
+                    }
+                }
+            },
+            "event": { "type": "keyword" },
+            "gid": { "type": "keyword"},
+            "host": { "type": "keyword"},
+            "job_id": { "type": "keyword"},
+            "port": { "type": "integer" },
+            "status": { "type": "keyword" },
+            "step_id": { "type": "keyword"},
+            "uid": { "type": "keyword"},
+            "version": { "type": "keyword" }
+        }
+    }
+}
