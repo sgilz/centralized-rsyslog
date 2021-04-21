@@ -1,6 +1,6 @@
 ---
 #network
-machine: 192.168.5.162
+machine: 10.150.7.165
 elasticsearch_port: 9200
 kibana_port: 9000
 logstash_port: 5044

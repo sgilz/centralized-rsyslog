@@ -1,5 +1,5 @@
 ---
-- hosts: rsyslog_server
+- hosts: master
   vars:
     packages:
       - elasticsearch
@@ -15,7 +15,4 @@
         path: "/etc/{{item}}"
         state: absent
       loop: "{{ packages }}"
-    - name: remove rsyslog.d 
-      shell: rm -rf /etc/rsyslog.d/*
-      args:
-        warn: no
+  

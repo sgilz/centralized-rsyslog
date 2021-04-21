@@ -15,9 +15,9 @@
 
 - name: Download filebeat rpm file
   get_url:
-    url: "https://artifacts.elastic.co/downloads/filebeat/filebeat-{{ elk_version }}-x86_64.rpm"
+    url: "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ elk_version }}-x86_64.rpm"
     dest: "/tmp/rpm/filebeat-{{ elk_version }}-x86_64.rpm"
-    checksum: "sha512:https://artifacts.elastic.co/downloads/filebeat/filebeat-{{ elk_version }}-x86_64.rpm.sha512"
+    checksum: "sha512:https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ elk_version }}-x86_64.rpm.sha512"
 
 - name: Install filebeat rpm files
   yum:
