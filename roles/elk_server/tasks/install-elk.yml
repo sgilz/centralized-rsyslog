@@ -33,7 +33,8 @@
 #Installation done this way to aviod yum bottleneck iterating through a loop
 - name: Finding all rpm files in /tmp/rpm folder
   find:
-    paths: "/tmp/rpm"
+    paths: 
+      - /tmp/rpm
     patterns: "*.rpm"
     recurse: yes
   register: rpm_files
