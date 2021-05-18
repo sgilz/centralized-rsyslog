@@ -5,4 +5,4 @@ logstash_port: 5044
 #elk version 
 elk_version: 7.12.0
 
-send_cron: false
+send_cron: true

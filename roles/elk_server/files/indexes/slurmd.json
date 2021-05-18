@@ -14,7 +14,7 @@
             },
             "event": { "type": "keyword" },
             "gid": { "type": "keyword"},
-            "host": { "type": "keyword"},
+            "slurm_host": { "type": "keyword"},
             "job_id": { "type": "keyword"},
             "port": { "type": "integer" },
             "status": { "type": "keyword" },

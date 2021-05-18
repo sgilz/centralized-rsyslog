@@ -119,10 +119,11 @@ filebeat.inputs:
   fields_under_root: true
 
 - type: log
+  enabled: {{ send_cron }}
   paths:
     - /var/log/cron*
   fields:
-    fromcron: {{ send_cron }}
+    fromcron: true
   fields_under_root: true
 
 - type: log

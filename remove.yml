@@ -10,9 +10,14 @@
       yum:
         name: "{{ packages }}"
         state: removed
-    - name: remove ELK dirs
+    - name: remove ELK config dirs
       file:
         path: "/etc/{{item}}"
         state: absent
       loop: "{{ packages }}"
-  
+    - name: remove ELK data dirs
+      file:
+        path: "/var/lib/{{item}}"
+        state: absent
+      loop: "{{ packages }}"
+      
