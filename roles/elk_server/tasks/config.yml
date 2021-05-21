@@ -54,4 +54,6 @@
     owner: root
     group: root
     mode: 0644
-  notify: enable_restart_kibana
+  notify: 
+    - enable_restart_kibana
+    - import_dashboard

@@ -41,3 +41,16 @@
     src: "indexes/settings.json"
   loop: "{{ indexes }}"
   listen: create_indexes_mappings
+
+- name: Copy import file to remote machine
+  copy:
+    src: kibana_saved_objects/dashboards_and_visualizations.ndjson
+    dest: /tmp/dashboards_and_visualizations.ndjson
+    mode: 0644
+  notify: import_dashboard
+
+- name: Import dashboard
+  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \
+                -H "kbn-xsrf: true" \
+                -F file=@/tmp/dashboards_and_visualizations.ndjson'
+  listen: import_dashboard

@@ -102,6 +102,7 @@ filebeat.inputs:
   fields:
     fromsecure: true
   fields_under_root: true # Added fields are not under [beats] field
+  scan_frequency: {{ scan_frequency }}
 
 - type: log
   paths:
@@ -109,6 +110,7 @@ filebeat.inputs:
   fields:
     fromslurmctld: true
   fields_under_root: true
+  scan_frequency: {{ scan_frequency }}
 
 - type: log
   enabled: {{ send_slurmd }} #when slurmd is running on master
@@ -117,6 +119,7 @@ filebeat.inputs:
   fields:
     fromslurmd: true
   fields_under_root: true
+  scan_frequency: {{ scan_frequency }}
 
 - type: log
   enabled: {{ send_cron }}
@@ -125,6 +128,7 @@ filebeat.inputs:
   fields:
     fromcron: true
   fields_under_root: true
+  scan_frequency: 10m
 
 - type: log
   paths:
@@ -132,13 +136,16 @@ filebeat.inputs:
   fields:
     frommessages: true
   fields_under_root: true
+  scan_frequency: 10m
 
 - type: log
+  enabled: false
   paths:
     - /var/log/dirsrv/slapd-APOLO-EAFIT-EDU-CO/access*
   fields:
     fromfreeipa: true
   fields_under_root: true
+  scan_frequency: {{ scan_frequency }}
 
 
 # ============================== Filebeat modules ==============================
