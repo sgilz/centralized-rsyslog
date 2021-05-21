@@ -17,17 +17,33 @@
     state: restarted
     enabled: yes
 
+# - name: Ensure first 503 code for elastic resquests
+#   uri:
+#     url: "http://{{ machine }}:{{ elasticsearch_port }}/cron?pretty"
+#     headers:
+#       Content-Type: application/json
+#     timeout: 60
+#     method: PUT
+#     src: "indexes/{{ item }}.json"
+#     status_code:
+#      - 200
+#      - 400
+#   loop: "{{ indexes }}"
+#   listen: create_indexes_mappings
+
 - name: Create indices and mappings
   uri:
     url: "http://{{ machine }}:{{ elasticsearch_port }}/{{ item }}?pretty"
     headers:
       Content-Type: application/json
-    timeout: 60
+    timeout: 180
     method: PUT
     src: "indexes/{{ item }}.json"
     status_code:
      - 200
      - 400
+  retries: 5
+  delay: 30
   loop: "{{ indexes }}"
   listen: create_indexes_mappings
 
@@ -36,11 +52,9 @@
     url: "http://{{ machine }}:{{ elasticsearch_port }}/{{ item }}/_settings?pretty"
     headers:
       Content-Type: application/json
-    timeout: 180
+    timeout: 60
     method: PUT
     src: "indexes/settings.json"
-  retries: 3
-  delay: 30
   loop: "{{ indexes }}"
   listen: create_indexes_mappings
 
