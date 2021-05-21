@@ -36,9 +36,11 @@
     url: "http://{{ machine }}:{{ elasticsearch_port }}/{{ item }}/_settings?pretty"
     headers:
       Content-Type: application/json
-    timeout: 60
+    timeout: 180
     method: PUT
     src: "indexes/settings.json"
+  retries: 3
+  delay: 30
   loop: "{{ indexes }}"
   listen: create_indexes_mappings
 
@@ -53,4 +55,6 @@
   shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \
                 -H "kbn-xsrf: true" \
                 -F file=@/tmp/dashboards_and_visualizations.ndjson'
+  args:
+    warn: false
   listen: import_dashboard
