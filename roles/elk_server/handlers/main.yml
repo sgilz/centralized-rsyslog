@@ -17,19 +17,20 @@
     state: restarted
     enabled: yes
 
-# - name: Ensure first 503 code for elastic resquests
-#   uri:
-#     url: "http://{{ machine }}:{{ elasticsearch_port }}/cron?pretty"
-#     headers:
-#       Content-Type: application/json
-#     timeout: 60
-#     method: PUT
-#     src: "indexes/{{ item }}.json"
-#     status_code:
-#      - 200
-#      - 400
-#   loop: "{{ indexes }}"
-#   listen: create_indexes_mappings
+# Since it raises 503 error for the first index
+- name: Ensure 503 code for first elastic resquests
+  uri:
+    url: "http://{{ machine }}:{{ elasticsearch_port }}/cron?pretty"
+    headers:
+      Content-Type: application/json
+    timeout: 60
+    method: PUT
+    src: "indexes/cron.json"
+    status_code:
+     - 200
+     - 400
+     - 503
+  listen: create_indexes_mappings
 
 - name: Create indices and mappings
   uri:
@@ -66,9 +67,7 @@
   notify: import_dashboard
 
 - name: Import dashboard
-  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \
-                -H "kbn-xsrf: true" \
-                -F file=@/tmp/dashboards_and_visualizations.ndjson'
+  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" -H "kbn-xsrf: true" -F file=@/tmp/dashboards_and_visualizations.ndjson'
   args:
     warn: false
   listen: import_dashboard
