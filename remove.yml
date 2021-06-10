@@ -12,12 +12,12 @@
         state: removed
     - name: remove ELK config dirs
       file:
-        path: "/etc/{{item}}"
+        path: "/etc/{{ item }}"
         state: absent
       loop: "{{ packages }}"
     - name: remove ELK data dirs
       file:
-        path: "/var/lib/{{item}}"
+        path: "/var/lib/{{ item }}"
         state: absent
       loop: "{{ packages }}"
       

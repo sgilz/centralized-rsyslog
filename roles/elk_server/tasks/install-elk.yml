@@ -41,7 +41,7 @@
 
 - name: Setting rpm_list as a list of paths
   set_fact:
-    rpm_list: "{{ rpm_files.files | map(attribute='path') | list}}"
+    rpm_list: "{{ rpm_files.files | map(attribute='path') | list }}"
 
 - name: Installing ELK rpm files
   yum:
