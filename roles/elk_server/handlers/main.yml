@@ -66,8 +66,12 @@
     mode: 0644
   listen: import_dashboard
 
-- name: Import dashboard
-  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" -H "kbn-xsrf: true" -F file=@/tmp/dashboards_and_visualizations.ndjson'
-  args:
+- name: Import dashboard                                                                                                              
+  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \                                          
+          -H "kbn-xsrf: true" \                                                                                                       
+          -H "charset=utf-8; boundary=__X_PAW_BOUNDARY__" \                                                                           
+          -k \                                                                                                                        
+          -F file=@/tmp/dashboards_and_visualizations.ndjson'
+  args:                                                                                                                               
     warn: false
   listen: import_dashboard
