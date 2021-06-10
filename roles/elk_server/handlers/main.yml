@@ -66,11 +66,16 @@
     mode: 0644
   listen: import_dashboard
 
+- name: Wait 1 min for Kibana to be set
+  pause:
+    minutes: 1
+    prompt: "Index patterns might be not uploaded, in such case visit the repo troubleshooting section."
+  listen: import_dashboard
+
 - name: Import dashboard                                                                                                              
-  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \                                          
-          -H "kbn-xsrf: true" \                                                                                                       
-          -H "charset=utf-8; boundary=__X_PAW_BOUNDARY__" \                                                                           
-          -k \                                                                                                                        
+  shell : 'curl -X POST "http://{{ machine }}:{{ kibana_port }}/api/saved_objects/_import" \
+          -H "kbn-xsrf: true; charset=utf-8; boundary=__X_PAW_BOUNDARY__" \
+          -k \
           -F file=@/tmp/dashboards_and_visualizations.ndjson'
   args:                                                                                                                               
     warn: false
