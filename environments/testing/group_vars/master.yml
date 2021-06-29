@@ -1,0 +1,3 @@
+---
+#Variables to send specific logs to the elk server
+send_slurmd: true #set false unless slurmd is running on master

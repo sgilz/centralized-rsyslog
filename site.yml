@@ -1,4 +1,6 @@
 ---
 - import_playbook: playbooks/elk_server.yml
-- import_playbook: playbooks/master.yml
-- import_playbook: playbooks/computes.yml
+
+# Commented since clients are installed in the cluster's Ansible
+# - import_playbook: playbooks/master.yml
+# - import_playbook: playbooks/computes.yml

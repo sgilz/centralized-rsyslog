@@ -1,0 +1,10 @@
+---
+#network
+machine: 10.150.2.60
+logstash_port: 5044
+
+#dependencies
+java_version: 1.8.0
+
+#elk version 
+elk_version: 7.12.0

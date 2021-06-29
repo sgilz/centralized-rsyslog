@@ -1,0 +1,7 @@
+---
+#Default time to scan log files
+scan_frequency: 1m
+
+# Variables to send specific logs to the elk server
+send_cron: true # set true for sending cronjob logs to the server.
+

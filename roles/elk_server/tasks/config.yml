@@ -14,7 +14,9 @@
   file:
     path: /var/log/logstash/dead_letter_queue
     state: directory
-    mode: 0755
+    owner: logstash
+    group: logstash
+    mode: 0700
 
 - name: Configure logstash
   copy:

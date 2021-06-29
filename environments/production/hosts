@@ -1,0 +1,16 @@
+[all:vars]
+ansible_user=root
+ansible_python_interpreter=/usr/libexec/platform-python
+
+[slaves]
+compute-0-[0:14]
+
+[elk_server]
+localhost   ansible_connection=local 
+
+[master]
+apolo
+
+[cluster:children]
+master
+slaves

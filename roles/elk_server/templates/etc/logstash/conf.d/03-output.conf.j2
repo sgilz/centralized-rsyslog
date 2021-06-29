@@ -7,6 +7,8 @@ output {
     elasticsearch { # Dead Letter Queue is only supported for elasticsearch output
       http_compression => true # Elasticsearch uses http compression by default
       index => "secure"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }
@@ -18,6 +20,8 @@ output {
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
       index => "slurmctld"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }
@@ -29,6 +33,8 @@ output {
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
       index => "slurmd"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }
@@ -40,6 +46,8 @@ output {
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
       index => "cron"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }
@@ -51,6 +59,8 @@ output {
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
       index => "messages"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }
@@ -62,6 +72,8 @@ output {
     elasticsearch {
       http_compression => true # Elasticsearch uses http compression by default
       index => "freeipa"
+      user => "elastic"
+      password => "elk.2021!"
       hosts => ["{{ machine }}:{{ elasticsearch_port }}"]
     }
   }

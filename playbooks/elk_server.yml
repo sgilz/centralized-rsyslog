@@ -1,5 +1,5 @@
 ---
 - name: elk_server
-  hosts: master
+  hosts: elk_server
   roles:
     - elk_server
